@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+
+        <!-- Top menu item -->
+
+        <menuitem name="Restaurapp_App" id="restaurapp_app.menu_root" />
+
+        <!-- menu categories -->
+
+        <menuitem name="Product" id="restaurapp_app.menu_product" parent="restaurapp_app.menu_root" />
+        <menuitem name="Category" id="restaurapp_app.menu_category" parent="restaurapp_app.menu_root" />
+        <menuitem name="Ingredients" id="restaurapp_app.menu_ingredients" parent="restaurapp_app.menu_root" />
+        <menuitem name="Order" id="restaurapp_app.menu_order" parent="restaurapp_app.menu_root" />
+
+
+        <!-- actions -->
+
+        <menuitem name="List Product" id="restaurapp_app.menu_product_list" parent="restaurapp_app.menu_product" action="restaurapp_app.action_window_product_list" />
+        <menuitem name="List Category" id="restaurapp_app.menu_category_list" parent="restaurapp_app.menu_category" action="restaurapp_app.action_window_category_list" />
+        <menuitem name="List Ingredients" id="restaurapp_app.menu_ingredients_list" parent="restaurapp_app.menu_ingredients" action="restaurapp_app.action_window_ingredients_list" />
+        <menuitem name="List Order" id="restaurapp_app.menu_order_list" parent="restaurapp_app.menu_order" action="restaurapp_app.action_window_order_list" />
+
+
+    </data>
+</odoo>

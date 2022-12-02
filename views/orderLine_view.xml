@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="restaurapp_app.ol_model_form">
+            <field name="name">OrderLine Form</field>
+            <field name="model">restaurapp_app.ol_model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name = "order_id"/>
+                            <field name = "product_id"/>
+                            <field name = "quantity"/>
+                            <field name = "description" widget="html"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="restaurapp_app.ol_model_list">
+            <field name="name">OrderLine List</field>
+            <field name="model">restaurapp_app.ol_model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name = "order_id"/>
+                    <field name = "product_id"/>
+                    <field name = "quantity"/>
+                    <field name = "description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="restaurapp_app.action_window_ol_list">
+            <field name="name">OrderLine List</field>
+            <field name="res_model">restaurapp_app.ol_model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

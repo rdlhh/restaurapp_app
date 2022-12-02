@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_restaurapp_app_product_model,restaurapp_app.product_model,model_restaurapp_app_product_model,base.group_user,1,1,1,1
+access_restaurapp_app_category_model,restaurapp_app.category_model,model_restaurapp_app_category_model,base.group_user,1,1,1,1
+access_restaurapp_app_ingredients_model,restaurapp_app.ingredients_model,model_restaurapp_app_ingredients_model,base.group_user,1,1,1,1
+access_restaurapp_app_order_model,restaurapp_app.order_model,model_restaurapp_app_order_model,base.group_user,1,1,1,1
+access_restaurapp_app_ol_model,restaurapp_app.ol_model,model_restaurapp_app_ol_model,base.group_user,1,1,1,1
