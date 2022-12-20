@@ -12,7 +12,7 @@ class product(models.Model):
   price = fields.Monetary(string="Price")
   category = fields.Many2one("restaurapp_app.category_model", string="Category")
   ingredients = fields.Many2many("restaurapp_app.ingredients_model",string="Ingredients",relation="ingredients2products")
-  order = fields.Many2one("restaurapp_app.order_model", string="Order")
+  
 
 
 

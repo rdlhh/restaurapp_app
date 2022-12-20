@@ -22,7 +22,6 @@
             <field name="model">restaurapp_app.ol_model</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name = "order_id"/>
                     <field name = "product_id"/>
                     <field name = "quantity"/>
                     <field name = "description"/>
