@@ -8,6 +8,5 @@ class order(models.Model):
     clients = fields.Char(string="Clients reference", help="The reference of clients")
     waiter = fields.Char(string="Waiter", help="The name of the waiter", required=True)
     pax = fields.Char(string="Clients number", help="The number of the clients", required=True)
-    productOrder = fields.One2many("restaurapp_app.product_model", inverse_name="order", string="Product", required=True)
     tPrice = fields.Float(string="Price", help="The total price of the order")
-    orderLine = fields.Many2one("restaurapp_app.ol_model", string="OrderLine")
+    orderLine = fields.One2many("restaurapp_app.ol_model", "quantity", string="Products", required=True)

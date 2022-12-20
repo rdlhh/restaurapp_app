@@ -11,7 +11,7 @@
                             <field name = "clients"/>
                             <field name = "waiter"/>
                             <field name = "pax"/>
-                            <field name = "productOrder"/> 
+                            <field name = "orderLine"/> 
                             <field name = "tPrice"/> 
                         </group>
                     </sheet>
@@ -28,7 +28,7 @@
                     <field name = "clients"/>
                     <field name = "waiter"/>
                     <field name = "pax"/>
-                    <field name = "productOrder"/>
+                    <field name = "orderLine"/>
                     <field name = "tPrice"/> 
                 </tree>
             </field>
