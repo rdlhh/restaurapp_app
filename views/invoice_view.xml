@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="invoice.invoice_model_form">
+            <field name="name">Invoice Form</field>
+            <field name="model">invoice.invoice_model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name = "ref"/>
+                            <field name = "date"/>
+                            <field name = "currency_id" invisible="True"/>
+                            <field name = "base" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name = "iva"/>
+                            <field name = "total"/>
+                            <field name = "lines"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice.invoice_model_list">
+            <field name="name">Invoice List</field>
+            <field name="model">invoice.invoice_model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name = "ref"/>
+                    <field name = "date"/>
+                    <field name = "currency_id" invisible="True"/>
+                    <field name = "base" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name = "iva"/>
+                    <field name = "total"/>
+                    <field name = "lines"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="invoice.action_window_invoice_list">
+            <field name="name">Invoice List</field>
+            <field name="res_model">invoice.invoice_model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -9,7 +9,7 @@ class order(models.Model):
     waiter = fields.Char(string="Waiter", help="The name of the waiter", required=True)
     pax = fields.Char(string="Clients number", help="The number of the clients", required=True)
     tPrice = fields.Float(string="Price", help="The total price of the order", compute="_getTotalPrice", store=True)
-    orderLine = fields.One2many("restaurapp_app.ol_model", "quantity", string="Products", required=True)
+    orderLine = fields.One2many("restaurapp_app.ol_model", "order_id", string="Products", required=True)
 
 
     @api.depends("orderLine")
