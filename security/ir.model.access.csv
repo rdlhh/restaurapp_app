@@ -4,3 +4,5 @@ access_restaurapp_app_category_model,restaurapp_app.category_model,model_restaur
 access_restaurapp_app_ingredients_model,restaurapp_app.ingredients_model,model_restaurapp_app_ingredients_model,base.group_user,1,1,1,1
 access_restaurapp_app_order_model,restaurapp_app.order_model,model_restaurapp_app_order_model,base.group_user,1,1,1,1
 access_restaurapp_app_ol_model,restaurapp_app.ol_model,model_restaurapp_app_ol_model,base.group_user,1,1,1,1
+access_restaurapp_app_invoice_model,restaurapp_app.invoice_model,model_restaurapp_app_invoice_model,base.group_user,1,1,1,1
+access_restaurapp_app_il_model,restaurapp_app.il_model,model_restaurapp_app_il_model,base.group_user,1,1,1,1

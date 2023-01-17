@@ -226,7 +226,7 @@ class Restaurapp(http.Controller):
             domain = [("id","=",orderid)]
         else:
             domain=[]
-        orderdata = http.request.env["restaurapp_app.order_model"].sudo().search_read(domain,["table","waiter","pax", "tPrice", "orderLine"])
+        orderdata = http.request.env["restaurapp_app.order_model"].sudo().search_read(domain,["table","waiter","pax", "clients", "tPrice", "orderLine"])
         data={  "status":200,
             "data":orderdata 
             }

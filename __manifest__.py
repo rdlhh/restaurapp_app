@@ -28,6 +28,8 @@
         'views/ingredients_view.xml',
         'views/order_view.xml',
         'views/orderLine_view.xml',
+        'views/invoice_view.xml',
+        'views/invoiceLine_view.xml',
         'views/menu.xml',
         
     ],

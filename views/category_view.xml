@@ -37,16 +37,12 @@
             <field name="arch" type="xml">
               <kanban class="o_res_partner_kanban">
                 <field name="name"/>
-                <field name="photo"/>
                 <templates>
                   <t t-name="kanban-box">
                     <div t-attf-class="oe_kanban_global_click">
-                      <div class="o_kanban_image">
-                        <field name="photo" nolabel="1" widget="image" class="oe_right oe_avatar"/>
-                      </div>
                       <div class="oe_kanban_details">
                         <strong>
-                          <field name="name" class="oe_inline"/>/>
+                          <field name="name" class="oe_inline"/>
                         </strong>
                       </div>
                     </div>
