@@ -27,10 +27,10 @@ class order(models.Model):
         invoice["client"] = self.clients
         invoice["base"] = self.tPrice
         inv = self.env['restaurapp_app.invoice_model'].sudo().create(invoice)
-        for line in self.orderLine:
+        for ol in self.orderLine:
             line = {}
             line["lineId"] = inv.id
-            line["quantity"] = line.quantity
-            line["product"] = line.product.id
-            line["description"] = line.description
-            self.env["restaurapp_app.invoiceLine_model"].sudo().create(line)
+            line["quantity"] = ol.quantity
+            line["product"] = ol.product_id.id
+            line["description"] = ol.description
+            self.env["restaurapp_app.il_model"].sudo().create(line)
