@@ -5,21 +5,24 @@
             <field name="model">restaurapp_app.order_model</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="confirmOrder" type="object" string="Confirm Order" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
                     <sheet>
                         <group>
-                            <field name = "table"/>
-                            <field name = "clients"/>
-                            <field name = "waiter"/>
-                            <field name = "pax"/>
-                            <field name = "orderLine">
+                            <field name = "table" attrs="{'readonly':[('state','=', 'C')]}"/>
+                            <field name = "clients" attrs="{'readonly':[('state','=', 'C')]}"/>
+                            <field name = "waiter" attrs="{'readonly':[('state','=', 'C')]}"/>
+                            <field name = "pax" attrs="{'readonly':[('state','=', 'C')]}"/>
+                            <field name = "orderLine" attrs="{'readonly':[('state','=', 'C')]}">
                                 <tree>
-                                    <field name = "order_id"/>
                                     <field name = "product_id"/>
                                     <field name = "quantity"/>
                                     <field name = "description"/>
                                 </tree>
                             </field> 
-                            <field name = "tPrice"/> 
+                            <field name = "tPrice" readonly="True"/> 
                         </group>
                     </sheet>
                 </form>
@@ -37,6 +40,7 @@
                     <field name = "pax"/>
                     <field name = "orderLine"/>
                     <field name = "tPrice"/> 
+                    <field name = "state"/> 
                 </tree>
             </field>
         </record>

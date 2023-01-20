@@ -7,7 +7,6 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name = "order_id"/>
                             <field name = "product_id"/>
                             <field name = "quantity"/>
                             <field name = "description" widget="html"/> 

@@ -226,6 +226,7 @@ class Restaurapp(http.Controller):
             domain = [("id","=",orderid)]
         else:
             domain=[]
+        
         orderdata = http.request.env["restaurapp_app.order_model"].sudo().search_read(domain,["table","waiter","pax", "clients", "tPrice", "orderLine"])
         data={  "status":200,
             "data":orderdata 
@@ -281,44 +282,46 @@ class Restaurapp(http.Controller):
                 }
             return data
 
+                                                    #INVOICE#
+
+    @http.route('/restaurapp_app/invoice', auth='public',type="http")
+    def invoice(self, **kw):
+        validata = http.request.env["restaurapp_app.invoice_model"].sudo().search_read([],["ref", "date", "base", "iva", "total", "lines", "client"])
+        data ={"status":200, "data":validata}
+        return http.Response(json.dumps(data).encode("utf8"),mimetype="application/json")
+
+    @http.route(['/restaurapp_app/getInvoice','/restaurapp_app/getInvoice/<int:invoiceid>'],auth='public', type='http')
+    def getInvoice(self,invoiceid=None, **kw):
+        if invoiceid:
+            domain = [("id","=",invoiceid)]
+        else:
+            domain=[]
+        invoicedata = http.request.env["restaurapp_app.invoice_model"].sudo().search_read(domain,["ref", "date", "base", "iva", "total", "lines", "client"])
+        for rec in invoicedata:
+            rec["date"] = rec["date"].isoformat()
+        data={  "status":200,
+            "data":invoicedata 
+            }
+        return http.Response(json.dumps(data).encode("utf8"),mimetype="application/json")
+
+    @http.route('/restaurapp_app/addInvoice',auth='public', type='json',method="POST")
+    def addInvoice(self, **kw):
+        response = request.jsonrequest
+        try:
+            result = http.request.env["restaurapp_app.invoice_model"].sudo().create(response)
+            data = {"status":201, "id":result.id}
+            return data
+        except Exception as e:
+            data={  
+                "status":404,
+                "error":e 
+                }
+            return data
     
 
-
-
-
-
-
-
-#    @http.route('/validations_app/hello', auth='public', type="http")
-#    def hello(self, **kw):
-#        return "Hello World!"
-
-#    @http.route('/validations_app/test', auth='public',type="http")
-#    def test(self, **kw):
-#        validata = http.request.env["validations_app.students_model"].sudo().search_read([],["name","location"])
-#        data ={"status":200, "data":validata}
-#        return http.Response(json.dumps(data).encode("utf8"),mimetype="application/jason")
-
-#    @http.route('/validations_app/test', auth='public',type="http")
-#    def test(self, **kw):
-#        validata = http.request.env["validations_app.modules_model"].sudo().search_read([],["name"])
-#        data ={"status":200, "data":validata}
-#        return http.Response(json.dumps(data).encode("utf8"),mimetype="application/jason")
-
-# class TaskApp(http.Controller):
-#     @http.route('/task_app/task_app/', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
-
-#     @http.route('/task_app/task_app/objects/', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('task_app.listing', {
-#             'root': '/task_app/task_app',
-#             'objects': http.request.env['task_app.task_app'].search([]),
-#         })
-
-#     @http.route('/task_app/task_app/objects/<model("task_app.task_app"):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('task_app.object', {
-#             'object': obj
-#         })
+    @http.route(['/restaurapp_app/confirmInvoice/<int:id>'], auth='public', type="http")
+    def confirmInvoice(self, id=None, **kw):
+        order = http.request.env["restaurapp_app.order_model"].sudo().search([("id", "=", id)])
+        order.confirmInvoice()
+        data = { "status":200 }
+        return http.Response(json.dumps(data).encode("utf8"), mimetype="application/json")
