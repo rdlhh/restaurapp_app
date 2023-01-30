@@ -30,6 +30,7 @@
         'views/orderLine_view.xml',
         'views/invoice_view.xml',
         'views/invoiceLine_view.xml',
+        'views/invoicePDF.xml',
         'views/menu.xml',
         
     ],

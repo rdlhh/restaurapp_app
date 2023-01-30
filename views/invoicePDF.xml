@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="invoicePDF">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>FACTURA</h2>
+                        <div class="row my-3">
+                            <div class="col-10">
+                                <h1>Restaurapp_APP</h1>
+                                <p>Av. Antoni Almela, 35</p>
+                                <p>L'Alcúdia</p>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row fact-info mt-3">
+                            <div class="col-3">
+                                <h5>Facturar a:</h5>
+                                <p>
+                                    <span t-field="doc.client" />
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <h5>N° de factura:</h5>
+                                <h5>Fecha:</h5>
+                            </div>
+                            <div class="col-3">
+                                <h5>
+                                    <span t-field="doc.ref" />
+                                </h5>
+                                <p>
+                                    <span t-field="doc.date" />
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row my-5">
+                            <table class="table table-borderless factura">
+                                <thead>
+                                    <tr>
+                                        <th>Cant.</th>
+                                        <th>Producto</th>
+                                        <th>Importe</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <t t-foreach="doc.lines" t-as="l">
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="l.quantity" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="l.product" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="l.product.price" />
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <span t-field="doc.base" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>IVA incluido:</th>
+                                        <th>
+                                            <span t-field="doc.iva" />
+                                        </th>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Total Factura:</th>
+                                        <th>
+                                            <span t-field="doc.total" />
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="restaurapp_app.invoice_model" model="ir.actions.report">
+        <field name="name"> INVOICE </field>
+        <field name="model">restaurapp_app.invoice_model</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">restaurapp_app.invoicePDF</field>
+        <field name="report_file">restaurapp_app.invoicePDF</field>
+        <field name="print_report_name">'Invoice'</field>
+        <field name="binding_model_id" ref="model_restaurapp_app_invoice_model" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

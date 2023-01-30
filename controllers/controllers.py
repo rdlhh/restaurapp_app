@@ -325,3 +325,21 @@ class Restaurapp(http.Controller):
         order.confirmInvoice()
         data = { "status":200 }
         return http.Response(json.dumps(data).encode("utf8"), mimetype="application/json")
+
+
+    @http.route('/restaurapp_app/orderDetail/<int:orderid>', auth='public', type="http")
+    def orderDetail(self, orderid=None, **kw):
+        if orderid:
+            domain = [("id","=",orderid)]
+        else:
+            domain=[]
+        orderdata = http.request.env["restaurapp_app.order_model"].sudo().search_read(domain[("id", "=", id)])
+        detail = []
+        for key in orderdata[0]["orderLine"]:
+            domain=[("id","=",key)]
+            linedata = http.request.env["restaurapp_app.orderLine_model"].sudo().search(domain[("id", "=", id)])
+            detail.append(linedata)
+        orderdata[0]["orderLine"]=detail
+        data={  "status":200,
+                "data":orderdata }
+        return http.Response(json.dumps(data).encode("utf8"),mimetype="application/json")
