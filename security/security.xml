@@ -1,0 +1,29 @@
+<odoo>
+    <record id="module_rest_category" model="ir.module.category">
+        <field name="name">Restaurapp</field>
+    </record>
+    <!--  Restaurant Waiter Group  -->
+    <record id="rest_group_waiter" model="res.groups">
+        <field name="name">Camarero</field>
+        <field name="category_id" ref="module_rest_category" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    </record>
+    <!--  Restaurant Administrator Group  -->
+    <record id="rest_group_admin" model="res.groups">
+        <field name="name">Administrador</field>
+        <field name="category_id" ref="module_rest_category" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    </record>
+    <!--  Restaurant Cooker Group  -->
+    <record id="rest_group_cook" model="res.groups">
+        <field name="name">Cocinero</field>
+        <field name="category_id" ref="module_rest_category" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    </record>
+    <!--  Restaurant Barman Group  -->
+    <record id="rest_group_barman" model="res.groups">
+        <field name="name">BarMan</field>
+        <field name="category_id" ref="module_rest_category" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    </record>
+</odoo>

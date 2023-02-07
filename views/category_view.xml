@@ -14,6 +14,8 @@
                                     <field name="description"/>
                                 </tree>
                             </field>
+                            <field name="complete_name"/>
+                            <field name="parent_id"/>
                         </group>
                     </sheet>
                 </form>
