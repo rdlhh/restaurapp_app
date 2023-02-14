@@ -7,7 +7,7 @@ class order(models.Model):
     _rec_name = "table"
 
     table = fields.Char(string="Table number", help="The number of the table", required=True, index=True)
-    clients = fields.Char(string="Client name", help="The reference of clients", required=True)
+    clients = fields.Text(string="Client name", help="The reference of clients", required=True)
     waiter = fields.Char(string="Waiter", help="The name of the waiter", required=True, default=lambda self:self.env.user.name)
     pax = fields.Char(string="Clients number", help="The number of the clients", default=1)
     tPrice = fields.Float(string="Price", help="The total price of the order", compute="_getTotalPrice", store=True)
@@ -35,3 +35,10 @@ class order(models.Model):
             line["product"] = ol.product_id.id
             line["description"] = ol.description
             self.env["restaurapp_app.il_model"].sudo().create(line)
+
+    @api.onchange("table")
+    def changeNameClients(self):
+        self.clients = "Mesa "+ str(self.table)
+
+        
+            

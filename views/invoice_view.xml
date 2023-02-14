@@ -35,7 +35,7 @@
             <field name="name">Invoice List</field>
             <field name="model">restaurapp_app.invoice_model</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-success ="state == 'C'">
                     <field name="ref" readonly="True" />
                     <field name="date" />
                     <field name="iva" />

@@ -76,7 +76,7 @@ class Restaurapp(http.Controller):
                                                         #CATEGORY#
     @http.route('/restaurapp_app/category', auth='public',type="http")
     def category(self, **kw):
-        validata = http.request.env["restaurapp_app.category_model"].sudo().search_read([],["name","product"])
+        validata = http.request.env["restaurapp_app.category_model"].sudo().search_read([],["name","product", "parent_id"])
         data ={"status":200, "data":validata}
         return http.Response(json.dumps(data).encode("utf8"),mimetype="application/json")
 

@@ -33,7 +33,7 @@
             <field name="name">Order List</field>
             <field name="model">restaurapp_app.order_model</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-success ="state == 'C'">
                     <field name = "table"/>
                     <field name = "clients"/>
                     <field name = "waiter"/>

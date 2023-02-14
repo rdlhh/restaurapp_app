@@ -3,23 +3,31 @@
 
         <!-- Top menu item -->
 
-        <menuitem name="Restaurapp_App" id="restaurapp_app.menu_root" web_icon="restaurapp_app,static/description/icon.png" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
+        <menuitem name="Restaurapp_App" id="restaurapp_app.menu_root" web_icon="restaurapp_app,static/description/icon.png" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook,restaurapp_app.rest_group_barman"/>
 
         <!-- menu categories -->
 
-        <menuitem name="Product" id="restaurapp_app.menu_product" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="Category" id="restaurapp_app.menu_category" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="Ingredients" id="restaurapp_app.menu_ingredients" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="Order" id="restaurapp_app.menu_order" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="Invoice" id="restaurapp_app.menu_invoice" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin"/>
+        <menuitem name="Product" id="restaurapp_app.menu_product" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook,restaurapp_app.rest_group_barman"/>
+        <menuitem name="Category" id="restaurapp_app.menu_category" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook,restaurapp_app.rest_group_barman"/>
+        <menuitem name="Ingredients" id="restaurapp_app.menu_ingredients" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook,restaurapp_app.rest_group_barman"/>
+        <menuitem name="Order" id="restaurapp_app.menu_order" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook,restaurapp_app.rest_group_barman"/>
+        <menuitem name="Invoice" id="restaurapp_app.menu_invoice" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_barman"/>
+        <menuitem name="OrderLine" id="restaurapp_app.menu_ol" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_admin"/>
+        <menuitem name="OrderLineBar" id="restaurapp_app.menu_olbar" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_barman"/>
+        <menuitem name="OrderLineKitchen" id="restaurapp_app.menu_olkitchen" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_cook"/>
+        <menuitem name="OrderLineWaiter" id="restaurapp_app.menu_olwaiter" parent="restaurapp_app.menu_root" groups="restaurapp_app.rest_group_waiter"/>
 
         <!-- actions -->
 
-        <menuitem name="List Product" id="restaurapp_app.menu_product_list" parent="restaurapp_app.menu_product" action="restaurapp_app.action_window_product_list" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="List Category" id="restaurapp_app.menu_category_list" parent="restaurapp_app.menu_category" action="restaurapp_app.action_window_category_list" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="List Ingredients" id="restaurapp_app.menu_ingredients_list" parent="restaurapp_app.menu_ingredients" action="restaurapp_app.action_window_ingredients_list" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="List Order" id="restaurapp_app.menu_order_list" parent="restaurapp_app.menu_order" action="restaurapp_app.action_window_order_list" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin,restaurapp_app.rest_group_cook"/>
-        <menuitem name="List Invoice" id="restaurapp_app.menu_invoice_list" parent="restaurapp_app.menu_invoice" action="restaurapp_app.action_window_invoice_list" groups="restaurapp_app.rest_group_waiter,restaurapp_app.rest_group_admin"/>
+        <menuitem name="List Product" id="restaurapp_app.menu_product_list" parent="restaurapp_app.menu_product" action="restaurapp_app.action_window_product_list" />
+        <menuitem name="List Category" id="restaurapp_app.menu_category_list" parent="restaurapp_app.menu_category" action="restaurapp_app.action_window_category_list" />
+        <menuitem name="List Ingredients" id="restaurapp_app.menu_ingredients_list" parent="restaurapp_app.menu_ingredients" action="restaurapp_app.action_window_ingredients_list" />
+        <menuitem name="List Order" id="restaurapp_app.menu_order_list" parent="restaurapp_app.menu_order" action="restaurapp_app.action_window_order_list"/>
+        <menuitem name="List Invoice" id="restaurapp_app.menu_invoice_list" parent="restaurapp_app.menu_invoice" action="restaurapp_app.action_window_invoice_list" />
+        <menuitem name="List OrderLine" id="restaurapp_app.menu_ol_list" parent="restaurapp_app.menu_ol" action="restaurapp_app.action_window_ol_list" />
+        <menuitem name="List OrderLineB" id="restaurapp_app.menu_olbar_list" parent="restaurapp_app.menu_olbar" action="restaurapp_app.action_window_olbar_list" />
+        <menuitem name="List OrderLineK" id="restaurapp_app.menu_olkitchen_list" parent="restaurapp_app.menu_olkitchen" action="restaurapp_app.action_window_olkitchen_list" />
+        <menuitem name="List OrderLineW" id="restaurapp_app.menu_olwaiter_list" parent="restaurapp_app.menu_olwaiter" action="restaurapp_app.action_window_olwaiter_list" />
 
     </data>
 </odoo>
