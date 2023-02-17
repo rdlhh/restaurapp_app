@@ -7,19 +7,14 @@ class orderLine(models.Model):
     order_id = fields.Many2one("restaurapp_app.order_model")
     product_id = fields.Many2one("restaurapp_app.product_model", string="Product", required=True)
     quantity = fields.Integer(string="Quantity Product", help="Quantity products of the table", required = True, default=1)
-    description = fields.Html(string="Description product", help="Description of the products")
-    isdone = fields.Boolean(string="Is done?", help="The line is done?")
-    active = fields.Boolean(string="Is the order active?", help="The order is active?", default=True)
+    description = fields.Text(string="Description product", help="Description of the products")
+    state = fields.Selection([ ('P','Preparation'),('D','Done'),('DV','Delivered'),],string='state',default='P')
 
 
-    @api.onchange("isdone")
-    def changeActiveTask(self):
-        self.active = not self.isdone
-        self.isdone = not self.active
-        if self.isdone:
-            self.active = False
+    def changeStateDone(self):    
+        self.state = 'D'
+        self.order_id.changeColor()
 
-    def changeLine(self):
-        self.ensure_one()
-        self.isdone = not self.isdone
-        self.active = not self.isdone
+    def changeStateDelivered(self):    
+        self.state = 'DV'
+        self.order_id.changeColor()

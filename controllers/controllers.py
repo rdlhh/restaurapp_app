@@ -76,17 +76,17 @@ class Restaurapp(http.Controller):
                                                         #CATEGORY#
     @http.route('/restaurapp_app/category', auth='public',type="http")
     def category(self, **kw):
-        validata = http.request.env["restaurapp_app.category_model"].sudo().search_read([],["name","product", "parent_id"])
+        validata = http.request.env["restaurapp_app.category_model"].sudo().search_read([],["name","product", "parent_id", "child_id"])
         data ={"status":200, "data":validata}
         return http.Response(json.dumps(data).encode("utf8"),mimetype="application/json")
 
-    http.route(['/restaurapp_app/getCategory','/restaurapp_app/getCategory/<int:categoryid>'],auth='public', type='http')
-    def getCategory(self,categoryid=None, **kw):
-        if categoryid:
-            domain = [("id","=",categoryid)]
+    http.route(['/restaurapp_app/getCategory','/restaurapp_app/getCategory/<int:id>'],auth='public', type='http')
+    def getCategory(self,id=None, **kw):
+        if id:
+            domain = [("id","=",id)]
         else:
             domain=[]
-        categorydata = http.request.env["restaurapp_app.category_model"].sudo().search_read(domain,["name", "product"])
+        categorydata = http.request.env["restaurapp_app.category_model"].sudo().search_read(domain,["name","complete_name","product","parent_id"])
         data={  
             "status":200,
             "data":categorydata 

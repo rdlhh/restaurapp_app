@@ -33,14 +33,14 @@
             <field name="name">Order List</field>
             <field name="model">restaurapp_app.order_model</field>
             <field name="arch" type="xml">
-                <tree decoration-success ="state == 'C'">
+                <tree decoration-success="stateLine == 'F'" decoration-danger="stateLine == 'W'" decoration-primary="stateLine == 'D'">
                     <field name = "table"/>
                     <field name = "clients"/>
                     <field name = "waiter"/>
                     <field name = "pax"/>
                     <field name = "orderLine"/>
                     <field name = "tPrice"/> 
-                    <field name = "state"/> 
+                    <field name = "stateLine"/> 
                 </tree>
             </field>
         </record>
@@ -49,6 +49,7 @@
             <field name="name">Order List</field>
             <field name="res_model">restaurapp_app.order_model</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">[('state','=','A')]</field>
         </record>
 
     </data>

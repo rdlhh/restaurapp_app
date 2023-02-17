@@ -32,9 +32,6 @@
         'views/invoice_view.xml',
         'views/invoiceLine_view.xml',
         'views/invoicePDF.xml',
-        'views/oLBar_view.xml',
-        'views/oLKitchen_view.xml',
-        'views/oLWaiter_view.xml',
         'views/menu.xml',
         
     ],

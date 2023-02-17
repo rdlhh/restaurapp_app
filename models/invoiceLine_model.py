@@ -7,4 +7,4 @@ class InvoiceLine(models.Model):
     lineId = fields.Many2one("restaurapp_app.invoice_model")
     quantity = fields.Integer(string="Quantity",help="Quantity of the product.", default=1)
     product = fields.Many2one("restaurapp_app.product_model", string="Product", default=1)
-    description = fields.Html(string="Description",help="Description of the product")
+    description = fields.Text(string="Description",help="Description of the product")

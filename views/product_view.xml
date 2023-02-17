@@ -8,12 +8,13 @@
                     <sheet>
                         <group>
                             <field name = "name"/>
-                            <field name = "description" widget="html"/>
+                            <field name = "description"/>
                             <field name = "photo" widget="image"/>
                             <field name = "currency_id" invisible="True"/>
                             <field name = "price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                             <field name = "category"/> 
-                            <field name = "ingredients"/> 
+                            <field name = "ingredients"/>
+                            <field name = "destination"/> 
                         </group>
                     </sheet>
                 </form>

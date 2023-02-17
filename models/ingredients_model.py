@@ -5,5 +5,5 @@ class ingredients(models.Model):
     _description = 'This is the ingredients model'
 
     name = fields.Char(string="Ingredient Name", help="Name of the ingredient", required=True, index=True)
-    description = fields.Html(string="Description", help="Description of the ingredient")
+    description = fields.Text(string="Description", help="Description of the ingredient")
     product = fields.Many2many("restaurapp_app.product_model",string="Products",relation="ingredients2products")

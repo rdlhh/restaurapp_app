@@ -6,12 +6,13 @@ class product(models.Model):
   _description = 'This is the product model'
 
   name = fields.Char(string="Product Name", help="Name of the product", required=True, index=True)
-  description = fields.Html(string="Description", help="Description of the product", required=True)
+  description = fields.Text(string="Description", help="Description of the product", required=True)
   photo = fields.Image(string="Photo")
   currency_id = fields.Many2one('res.currency', string="Curency", default=lambda self:self.env.user.company_id.currency_id)
   price = fields.Monetary(string="Price")
   category = fields.Many2one("restaurapp_app.category_model", string="Category")
   ingredients = fields.Many2many("restaurapp_app.ingredients_model",string="Ingredients",relation="ingredients2products")
+  destination = fields.Selection([ ('K','Kitchen'),('B','Bar'),],string='Destination',default="K")
   
 
 

@@ -1,4 +1,5 @@
 import datetime
+from odoo.exceptions import ValidationError
 from odoo import models, fields, api
 
 class order(models.Model):
@@ -13,6 +14,7 @@ class order(models.Model):
     tPrice = fields.Float(string="Price", help="The total price of the order", compute="_getTotalPrice", store=True)
     orderLine = fields.One2many("restaurapp_app.ol_model", "order_id", string="Products", required=True)
     state = fields.Selection(string="State: ", selection=[('A', 'Active'), ('C', 'Confirmed')], default="A")
+    stateLine = fields.Selection([ ('W','Wait'),('D','Delivered'),('F','Finish'),],string='Action: ',default="W")
 
 
     @api.depends("orderLine")
@@ -21,8 +23,31 @@ class order(models.Model):
         for line in self.orderLine:
             self.tPrice += line.quantity * line.product_id.price
 
+        self.changeColor()
+
+    @api.depends("orderLine")
+    def changeColor(self):
+        flagD = False
+        flagW = False
+         
+        for line in self.orderLine:
+            if line.state == "P":
+                flagW = True
+            elif line.state == "D":
+                flagD = True
+            
+        if flagD == True:
+            self.stateLine = "D"
+        elif flagW == True:
+            self.stateLine = "W"
+        else:
+            self.stateLine = "F"
+
 
     def confirmOrder(self):
+        for l in self.orderLine:
+            if l.state != 'DV':
+                raise ValidationError("The order is not finished!")
         self.state = 'C'
         invoice = {}
         invoice["client"] = self.clients
